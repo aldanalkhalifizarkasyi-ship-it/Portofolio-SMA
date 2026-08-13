@@ -22,18 +22,12 @@
             overflow-x: hidden;
             max-width: 100%;
             min-height: 100vh;
-            background-image: url("../Image/red-dead-redemption-3840x2160-10624.png");
+
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-image: url("red-dead-redemption-3840x2160-10624.png");
             background-attachment: fixed;
-
-            /* background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-image: url("../Image/gtabg3.jpg");
-            background-attachment: fixed; */
-            
             
             /* default: background IKUT SCROLL, bukan fixed.
                ini yang bikin lebih responsif & aman di HP (lihat penjelasan
@@ -44,7 +38,6 @@
             align-items: center;
             gap: clamp(14px, 3vw, 24px);
             padding: 100px 0 50px;
-            position: relative;
         }
 
         /* ===== 3 HERO SECTION: RDR / GTA / TLOU =====
@@ -58,7 +51,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url("../Image/red-dead-redemption-3840x2160-10624.png");
+            background-image: url("red-dead-redemption-3840x2160-10624.png");
             
             /* default: background IKUT SCROLL, bukan fixed.
                ini yang bikin lebih responsif & aman di HP (lihat penjelasan
@@ -520,14 +513,16 @@
 </head>
 <body>
     <div class="TopMenu">
-        <img src="../Image/SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <img src="SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <p class="TopMenuWelcome">Selamat Datang Di Portofolio Aldan!</p>
         <div class="TopMenuButtons">
             <button onclick="location.href='Home.html'">Home</button>
             <button onclick="location.href='Profile.html'">My Profile</button>
             <button onclick="location.href='UA.html'">Unit Activity</button>
             <select name="Subjects" id="Subjects" onchange="location = this.value;" class="SubjectsDropdown">
-                <option value="" disabled selected hidden>Physics</option>
+                <option value="" disabled selected hidden>Subjects</option>
                 <option value="Mathematics.html">Mathematics</option>
+                <option value="Physics.html">Physics</option>
                 <option value="Sosiology.html">Sosiology</option>
                 <option value="Biology.html">Biology</option>
                 <option value="English.html">English</option>
@@ -542,11 +537,20 @@
         </div>
     </div>
 
-       <img src="../Image/Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
-        <div class="Card" id="physicssession">
-            <h1 class="CardTitle2">Physics</h1>
+    <!-- ===== HERO 1 / RDR — School of Human, Profil, Matematika ===== -->
+        <img src="Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
+
+        <div class="Card" id="homesession">
+            <h1 class="CardTitle">School Of Human</h1>
             <div class="CardRow">
-                 <img src="../Image/rdrdecor2.png" alt="" class="CardDecor SosioCardDecor1">
+                <img src="gambarsoh.jpeg" alt="" class="CardImg HomeCardSOHPhoto">
+                <p class="CardText">SCHOOL OF HUMAN adalah sekolah yang menghargai setiap potensi manusia sebagai ciptaan Allah SWT yang terbaik dengan membantu peserta didiknya menemukan profesi yang profesional sesuai dengan bakat, minat, dan pandangan dunianya sehingga siap menghadapi era globalisasi dengan menjunjung tinggi Akhlakul Karimah.</p>
+                <img src="hatdec.png" alt="" class="CardDecor HomeCardDecor1">
+            </div>
+            <h1 class="CardTitle">Location</h1>
+            <div class="CardRow">
+                <img src="lokasisoh.png" alt="" class="CardImg HomeCardSOHLoc">
+                <p class="CardText">Jl. Mendut Jl. Raya Kranggan No.126, RT.004/RW.001, Jatisampurna, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433</p>
             </div>
         </div>
 </body>

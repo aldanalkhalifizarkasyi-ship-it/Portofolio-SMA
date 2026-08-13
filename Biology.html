@@ -23,11 +23,12 @@
             max-width: 100%;
             min-height: 100vh;
 
-            background-size: cover;
+            /* background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url("../Image/red-dead-redemption-3840x2160-10624.png");
-            background-attachment: fixed;
+            background-image: url("gtabg3.jpg");
+            background-attachment: fixed; */
+            
             
             /* default: background IKUT SCROLL, bukan fixed.
                ini yang bikin lebih responsif & aman di HP (lihat penjelasan
@@ -38,6 +39,20 @@
             align-items: center;
             gap: clamp(14px, 3vw, 24px);
             padding: 100px 0 50px;
+            position: relative;
+        }
+
+        body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image: url("gtabg3.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                opacity: 0.5;
+                z-index: -1;
         }
 
         /* ===== 3 HERO SECTION: RDR / GTA / TLOU =====
@@ -51,7 +66,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url("../Image/red-dead-redemption-3840x2160-10624.png");
+            background-image: url("red-dead-redemption-3840x2160-10624.png");
             
             /* default: background IKUT SCROLL, bukan fixed.
                ini yang bikin lebih responsif & aman di HP (lihat penjelasan
@@ -513,16 +528,16 @@
 </head>
 <body>
     <div class="TopMenu">
-        <img src="../Image/SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <img src="SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
         <div class="TopMenuButtons">
             <button onclick="location.href='Home.html'">Home</button>
             <button onclick="location.href='Profile.html'">My Profile</button>
             <button onclick="location.href='UA.html'">Unit Activity</button>
             <select name="Subjects" id="Subjects" onchange="location = this.value;" class="SubjectsDropdown">
-                <option value="" disabled selected hidden>Mathematics</option>
+                <option value="" disabled selected hidden>Biology</option>
+                <option value="Mathematics.html">Mathematics</option>
                 <option value="Physics.html">Physics</option>
                 <option value="Sosiology.html">Sosiology</option>
-                <option value="Biology.html">Biology</option>
                 <option value="English.html">English</option>
                 <option value="History.html">History</option>
                 <option value="Literacy.html">Literacy</option>
@@ -535,13 +550,15 @@
         </div>
     </div>
 
-        <img src="../Image/Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
-        <div class="Card" id="mathsession">
-            <h1 class="CardTitle">Unit Activity</h1>
+       <div class="logobg2">
+            <img src="gta5logo.png" alt="GTA5 Logo" class="gta5logo">
+        </div>
+        <div class="Card" id="biologysession">
+            <h1 class="CardTitle2">Biology</h1>
             <div class="CardRow">
-                <img src="../Image/latihan_E&L1.png" alt="" class="CardImg">
-                <p class="CardText">Pada Bab 1, saya belajar tentang eksponen dan logaritma, mulai dari sifat-sifat dan aturan operasi eksponen hingga bentuk akar dan pangkat. Saya juga mempelajari konsep logaritma, hubungan antara eksponen dan logaritma, serta cara menyelesaikan berbagai bentuk soal yang berkaitan dengan keduanya.</p>
-                <img src="../Image/rdrdecor.png" alt="" class="CardDecor SosioCardDecor1">
+                <img src="biobab1.png" alt="" class="CardImg">
+                <p class="CardText2">Pada bab 1, belajar tentang Ruang Lingkup biologi, disini saya belajar tentang pengertian biologi, ciri ciri makhluk hidup, objek biologi, objek kajian biologi, cabang cabang biologi, peran biologi pada kehidupan, metode ilmiah, langkah langkah metode ilmiah, sikap ilmiah, laporan ilmiah, dan mikroskop </p>
+                <img src="franklindecor.png" alt="" class="CardDecor GtaCardDecor2">
             </div>
         </div>
 </body>

@@ -22,12 +22,17 @@
             overflow-x: hidden;
             max-width: 100%;
             min-height: 100vh;
-
+            background-image: url("red-dead-redemption-3840x2160-10624.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url("../Image/tloubg3.jpg");
             background-attachment: fixed;
+
+            /* background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("gtabg3.jpg");
+            background-attachment: fixed; */
             
             
             /* default: background IKUT SCROLL, bukan fixed.
@@ -42,19 +47,6 @@
             position: relative;
         }
 
-        /* body::before {
-                content: "";
-                position: fixed;
-                inset: 0;
-                background-image: url("../Image/tloubg3.jpg");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                opacity: 0.5;
-                z-index: -1;
-        } */
-
         /* ===== 3 HERO SECTION: RDR / GTA / TLOU =====
            Tiap .hero adalah "wadah" untuk sepertiga konten portofolio
            (3 Card per hero, 9 Card dibagi rata 3-3-3), dengan foto
@@ -66,7 +58,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url("../Image/tloubg3.png");
+            background-image: url("red-dead-redemption-3840x2160-10624.png");
             
             /* default: background IKUT SCROLL, bukan fixed.
                ini yang bikin lebih responsif & aman di HP (lihat penjelasan
@@ -528,19 +520,19 @@
 </head>
 <body>
     <div class="TopMenu">
-        <img src="../Image/SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <img src="SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
         <div class="TopMenuButtons">
             <button onclick="location.href='Home.html'">Home</button>
             <button onclick="location.href='Profile.html'">My Profile</button>
             <button onclick="location.href='UA.html'">Unit Activity</button>
             <select name="Subjects" id="Subjects" onchange="location = this.value;" class="SubjectsDropdown">
-                <option value="" disabled selected hidden>Literacy</option>
+                <option value="" disabled selected hidden>Physics</option>
                 <option value="Mathematics.html">Mathematics</option>
-                <option value="Physics.html">Physics</option>
                 <option value="Sosiology.html">Sosiology</option>
                 <option value="Biology.html">Biology</option>
                 <option value="English.html">English</option>
                 <option value="History.html">History</option>
+                <option value="Literacy.html">Literacy</option>
                 <option value="PAI.html">PAI</option>
                 <option value="OPT.html">OPT</option>
                 <option value="ICT.html">ICT</option>
@@ -550,15 +542,11 @@
         </div>
     </div>
 
-       <div class="logobg">
-            <img src="../Image/tloulogo2.png" alt="TLOU Logo" class="TLOUlogo">
-        </div>
-        <div class="Card" id="lit2session">
-            <h1 class="CardTitle3">BSQ</h1>
+       <img src="Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
+        <div class="Card" id="physicssession">
+            <h1 class="CardTitle2">Physics</h1>
             <div class="CardRow">
-                <img src="../Image/bindobab1.png" alt="" class="CardImg">
-                <p class="CardText3">Pada bab 1 Literasi, aku belajar tentang teks anekdot, kritik sosial, sindiran, struktur teks anekdot, serta mengerjakan tugas identifikasi teks anekdot</p>
-                <img src="../Image/elliedecor.png" alt="" class="CardDecor TLOUCardDecor1">
+                 <img src="rdrdecor2.png" alt="" class="CardDecor SosioCardDecor1">
             </div>
         </div>
 </body>
