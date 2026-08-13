@@ -9,24 +9,92 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
         body {
             margin: 0;
-            min-height: 100vh;
-            background-color: #3B3B3B;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: url("red-dead-redemption-3840x2160-10624.png");
+            background-color: #3B3B3B;
+            overflow-x: hidden;
+            max-width: 100%;
+            min-height: 100vh;
+
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-image: url("../Image/red-dead-redemption-3840x2160-10624.png");
             background-attachment: fixed;
+            
+            /* default: background IKUT SCROLL, bukan fixed.
+               ini yang bikin lebih responsif & aman di HP (lihat penjelasan
+               di bawah kenapa background-attachment:fixed dihapus dari sini) */
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(14px, 3vw, 24px);
+            padding: 100px 0 50px;
+        }
+
+        /* ===== 3 HERO SECTION: RDR / GTA / TLOU =====
+           Tiap .hero adalah "wadah" untuk sepertiga konten portofolio
+           (3 Card per hero, 9 Card dibagi rata 3-3-3), dengan foto
+           temanya sendiri sebagai background. */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("../Image/red-dead-redemption-3840x2160-10624.png");
+            
+            /* default: background IKUT SCROLL, bukan fixed.
+               ini yang bikin lebih responsif & aman di HP (lihat penjelasan
+               di bawah kenapa background-attachment:fixed dihapus dari sini) */
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(14px, 3vw, 24px);
+            padding: 100px 0 50px;
+        }
+
+        /* Efek parallax (background diam saat isinya di-scroll) HANYA dinyalakan
+           di layar besar & device yang punya mouse (bukan touchscreen).
+           Alasan: background-attachment:fixed itu:
+           1) TIDAK didukung dengan benar di Safari iOS (background malah
+              kelihatan "melompat"/blank/ke-crop aneh saat scroll di iPhone/iPad),
+           2) berat/nge-lag di banyak HP Android karena browser terpaksa
+              repaint background tiap scroll,
+           3) di section yang tinggi (karena isinya banyak card), fixed bikin
+              gambarnya "diam di tempat" jadi kelihatan seperti nyangkut,
+              bukan menutupi seluruh section dengan rapi.
+           Jadi di HP/tablet biarkan default (scroll), efek fixed cuma untuk
+           desktop dengan mouse. */
+        @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+            .hero {
+                background-attachment: fixed;
+            }
         }
 
         @font-face {
             font-family: "RDR";
-            src: url("chinese rocks rg.ttf") format("truetype");
+            src: url("../Font/chinese rocks rg.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "GTA";
+            src: url("../Font/Pricedown Bl.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: "TLOU";
+            src: url("../Font/The Last Of Us Rough.ttf") format("truetype");
         }
 
         /* ===== TOP MENU ===== */
@@ -76,23 +144,61 @@
             transform: scale(1.15);
         }
 
-        /* space so fixed menu doesn't cover content; height varies as it wraps */
-        .MenuSpacer {
-            height: 74px;
-            width: 100%;
+        .TopMenuWelcome {
+            color: rgb(255, 255, 255);
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
+            font-family: "RDR", serif;
+            letter-spacing: 0.5px;
+            text-align: center;
         }
 
         .rdrlogo {
             height: clamp(70px, 14vw, 120px);
-            margin: 10px 0 16px 0;
+            margin: 0 0 6px 0;
             max-width: 90%;
+            display: block;
+        }
+
+        .logobg,
+        .logobg2 {
+            width: clamp(160px, 45vw, 350px);
+            background-color: #171717;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(8px, 2vw, 16px);
+        }
+
+        .gta5logo {
+            height: clamp(60px, 14vw, 250px);
+            max-width: 90%;
+            width: auto;
+            display: block;
+        }
+
+        .TLOUlogo {
+            height: clamp(40px, 14vw, 200px);
+            max-width: 90%;
+            width: auto;
+            display: block;
+        }
+
+        .SubjectsDropdown {
+            border: 0;
+            border-radius: 20px;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+            cursor: pointer;
+            font-family: "RDR", serif;
         }
 
         /* ===== SHARED CARD STYLE ===== */
         .Card {
             width: 92%;
             max-width: 1100px;
-            margin: clamp(10px, 2.5vw, 20px) 0;
             padding: clamp(14px, 4vw, 30px);
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
@@ -105,6 +211,7 @@
 
             /* jadi acuan posisi untuk dekorasi absolute di dalamnya */
             position: relative;
+            overflow: visible;
         }
 
         .CardTitle {
@@ -114,6 +221,25 @@
             margin: 0;
             font-family: "RDR", serif;
             text-align: center;
+        }
+
+        .CardTitle2 {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "GTA", serif;
+            text-align: center;
+        }
+
+        .CardTitle3 {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "TLOU", serif;
+            text-align: center;
+            letter-spacing: 2px;
         }
 
         .CardRow {
@@ -134,6 +260,32 @@
             margin: 0;
             font-family: "RDR", serif;
             letter-spacing: 0.5px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .CardText2 {
+            flex: 2 1 260px;
+            min-width: 220px;
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0;
+            font-family: "GTA", serif;
+            letter-spacing: 1px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .CardText3 {
+            flex: 2 1 260px;
+            min-width: 220px;
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0;
+            font-family: "TLOU", serif;
+            letter-spacing: 2.5px;
             font-size: clamp(0.85rem, 1.6vw, 1rem);
         }
 
@@ -249,11 +401,8 @@
         }
 
         /* ===== DECORATIONS =====
-           Posisinya "nempel"/overlap di pojok kartu seperti versi awal, tapi sekarang
            position:absolute-nya relatif ke .Card (karena .Card sudah position:relative),
-           bukan relatif ke seluruh halaman seperti sebelumnya. Jadi kalau kartunya
-           mengecil/melebar, posisi dekor ikut menyesuaikan secara proporsional (pakai %),
-           dan ukurannya tetap fluid lewat clamp(). */
+           bukan relatif ke seluruh halaman. Ukurannya fluid lewat clamp(). */
         .CardDecor {
             position: absolute;
             max-width: 35%;
@@ -264,7 +413,7 @@
 
         .HomeCardDecor1 {
             height: clamp(60px, 15vw, 200px);
-            top: -12%;
+            top: -10%;
             right: -12%;
             transform: rotate(30deg);
         }
@@ -281,6 +430,17 @@
             right: -5%;
         }
 
+        .GtaCardDecor1,
+        .GtaCardDecor2,
+        .GtaCardDecor3,
+        .TLOUCardDecor1,
+        .TLOUCardDecor2,
+        .TLOUCardDecor3 {
+            height: clamp(90px, 20vw, 260px);
+            top: -25%;
+            right: -5%;
+        }
+
         @media (max-width: 460px) {
             .HomeCardDecor1 {
                 top: -4%;
@@ -292,13 +452,15 @@
                 left: -1%;
             }
 
-            .SosioCardDecor1 {
+            .SosioCardDecor1,
+            .GtaCardDecor1,
+            .GtaCardDecor2,
+            .GtaCardDecor3,
+            .TLOUCardDecor1,
+            .TLOUCardDecor2,
+            .TLOUCardDecor3 {
                 top: -15%;
                 right: -4%;
-            }
-
-            .rdrlogo {
-                margin-top: 55px;
             }
         }
 
@@ -317,11 +479,13 @@
                 text-align: left;
             }
 
-            .rdrlogo {
-                margin-top: 55px;
-            }
             .NameCardIMG {
                 height: clamp(200px, 30vw, 300px);
+            }
+
+            /* menu jadi 2-3 baris di layar sempit -> kasih ruang lebih di atas hero */
+            .hero {
+                padding-top: 140px;
             }
         }
 
@@ -333,117 +497,61 @@
             .CardDecor {
                 max-width: 28%;
             }
+
+            .hero {
+                padding-top: 170px;
+            }
+        }
+
+        /* pengguna yang mematikan animasi di OS-nya -> jangan paksa smooth-scroll */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
         }
     </style>
 </head>
 <body>
     <div class="TopMenu">
-        <img src="SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <img src="../Image/SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <p class="TopMenuWelcome">Selamat Datang Di Portofolio Aldan!</p>
         <div class="TopMenuButtons">
-            <button onclick="location.href='#homesession'">Home</button>
-            <button onclick="location.href='#myprofilesession'">My Profile</button>
-            <button onclick="location.href='#mathsession'">Mathematics</button>
-            <button onclick="location.href='#physicssession'">Physics</button>
-            <button onclick="location.href='#sosiologysession'">Sosiology</button>
-            <button onclick="location.href='#biologysession'">Biology</button>
-            <button>English</button>
-            <button onclick="location.href='#historysession'">History</button>
-            <button onclick="location.href='#lit2session'">LIT2</button>
-            <button>PAI</button>
-            <button>OPT</button>
-            <button>ICT</button>
-            <button>21CA</button>
-            <button>Logarithm</button>
-        </div>
-    </div>
-    <div class="MenuSpacer"></div>
-
-    <img src="Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
-
-    <div class="Card" id="homesession">
-        <h1 class="CardTitle">School Of Human</h1>
-        <div class="CardRow">
-            <img src="gambarsoh.jpeg" alt="" class="CardImg HomeCardSOHPhoto">
-            <p class="CardText">SCHOOL OF HUMAN adalah sekolah yang menghargai setiap potensi manusia sebagai ciptaan Allah SWT yang terbaik dengan membantu peserta didiknya menemukan profesi yang profesional sesuai dengan bakat, minat, dan pandangan dunianya sehingga siap menghadapi era globalisasi dengan menjunjung tinggi Akhlakul Karimah.</p>
-            <img src="hatdec.png" alt="" class="CardDecor HomeCardDecor1">
-        </div>
-        <h1 class="CardTitle">Location</h1>
-        <div class="CardRow">
-            <img src="lokasisoh.png" alt="" class="CardImg HomeCardSOHLoc">
-            <p class="CardText">Jl. Mendut Jl. Raya Kranggan No.126, RT.004/RW.001, Jatisampurna, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433</p>
+            <button onclick="location.href='Home.html'">Home</button>
+            <button onclick="location.href='Profile.html'">My Profile</button>
+            <button onclick="location.href='UA.html'">Unit Activity</button>
+            <select name="Subjects" id="Subjects" onchange="location = this.value;" class="SubjectsDropdown">
+                <option value="" disabled selected hidden>Subjects</option>
+                <option value="Mathematics.html">Mathematics</option>
+                <option value="Physics.html">Physics</option>
+                <option value="Sosiology.html">Sosiology</option>
+                <option value="Biology.html">Biology</option>
+                <option value="English.html">English</option>
+                <option value="History.html">History</option>
+                <option value="Literacy.html">Literacy</option>
+                <option value="PAI.html">PAI</option>
+                <option value="OPT.html">OPT</option>
+                <option value="ICT.html">ICT</option>
+                <option value="21CA.html">21CA</option>
+                <option value="Logarithm.html">Logarithm</option>
+            </select>
         </div>
     </div>
 
-    <div class="Card" id="myprofilesession">
-        <div class="CardRow">
-            <div class="NameCardText">
-                <div class="NameCardTitle">
-                    <h1 class="NameCardH1">Portofolio</h1>
-                    <h1 class="NameCardH12">Aldan 10A</h1>
-                </div>
-                <p class="NameCardDescription">Halo, saya Aldan Alkhalifi Zarkasyi, siswa kelas 10 di SMA School of Human. Saya memiliki ketertarikan yang tinggi pada bidang pemrograman, terutama dalam pengembangan game dan pembuatan website. Saya senang mempelajari teknologi baru serta terus mengembangkan keterampilan di bidang tersebut. Di waktu luang, saya juga menikmati bermain game sebagai sarana hiburan sekaligus sumber inspirasi dalam membuat game.</p>
-                <img src="morgan.png" alt="" class="CardDecor NameCardDecor1">
+    <!-- ===== HERO 1 / RDR — School of Human, Profil, Matematika ===== -->
+        <img src="../Image/Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
+
+        <div class="Card" id="homesession">
+            <h1 class="CardTitle">School Of Human</h1>
+            <div class="CardRow">
+                <img src="../Image/gambarsoh.jpeg" alt="" class="CardImg HomeCardSOHPhoto">
+                <p class="CardText">SCHOOL OF HUMAN adalah sekolah yang menghargai setiap potensi manusia sebagai ciptaan Allah SWT yang terbaik dengan membantu peserta didiknya menemukan profesi yang profesional sesuai dengan bakat, minat, dan pandangan dunianya sehingga siap menghadapi era globalisasi dengan menjunjung tinggi Akhlakul Karimah.</p>
+                <img src="../Image/hatdec.png" alt="" class="CardDecor HomeCardDecor1">
             </div>
-            <img src="fotoaldan3.png" alt="Foto Aldan" class="NameCardIMG">
+            <h1 class="CardTitle">Location</h1>
+            <div class="CardRow">
+                <img src="../Image/lokasisoh.png" alt="" class="CardImg HomeCardSOHLoc">
+                <p class="CardText">Jl. Mendut Jl. Raya Kranggan No.126, RT.004/RW.001, Jatisampurna, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433</p>
+            </div>
         </div>
-        <div class="NameCardH3Div">
-            <h1 class="NameCardH3">Game Projects</h1>
-        </div>
-        <div class="NameCardProject">
-            <img src="game1.png" alt="" class="projectimg">
-            <img src="game2.png" alt="" class="projectimg">
-            <img src="game3.png" alt="" class="projectimg">
-        </div>
-    </div>
-
-    <div class="Card" id="mathsession">
-        <h1 class="CardTitle">Mathematics</h1>
-        <div class="CardRow">
-            <img src="latihan_E&L1.png" alt="" class="CardImg">
-            <p class="CardText">Pada Bab 1, saya belajar tentang eksponen dan logaritma, mulai dari sifat-sifat dan aturan operasi eksponen hingga bentuk akar dan pangkat. Saya juga mempelajari konsep logaritma, hubungan antara eksponen dan logaritma, serta cara menyelesaikan berbagai bentuk soal yang berkaitan dengan keduanya.</p>
-        </div>
-    </div>
-
-    <div class="Card" id="physicssession">
-        <h1 class="CardTitle">Physics</h1>
-    </div>
-
-    <div class="Card" id="sosiologysession">
-        <h1 class="CardTitle">Sosiology</h1>
-        <div class="CardRow">
-            <img src="sosiotugas.jpg" alt="" class="CardImg">
-            <p class="CardText">Pada Bab 1, saya belajar tentang pengertian dan sejarah sosiologi, mengenal tokoh seperti Karl Marx, serta mempelajari perilaku manusia dan kehidupan sosial, termasuk pada zaman koboi. Saya juga melakukan observasi di luar kelas untuk mengamati kondisi dan interaksi sosial secara langsung, sehingga saya belajar memahami masyarakat berdasarkan pengamatan dan bukti.</p>
-            <img src="john.png" alt="" class="CardDecor SosioCardDecor1">
-        </div>
-    </div>
-
-    <div class="Card" id="biologysession">
-        <h1 class="CardTitle">Biology</h1>
-        <div class="CardRow">
-            <img src="biobab1.png" alt="" class="CardImg">
-            <p class="CardText">Pada bab 1, belajar tentang Ruang Lingkup biologi, disini saya belajar tentang pengertian biologi, ciri ciri makhluk hidup, objek biologi, objek kajian biologi, cabang cabang biologi, peran biologi pada kehidupan, metode ilmiah, langkah langkah metode ilmiah, sikap ilmiah, laporan ilmiah, dan mikroskop </p>
-        </div>
-    </div>
-
-    <div class="Card" id="englishsession">
-        <h1 class="CardTitle">English</h1>
-        <div class="CardRow"></div>
-    </div>
-    
-    <div class="Card" id="historysession">
-        <h1 class="CardTitle">History</h1>
-        <div class="CardRow">
-            <img src="sejarahbab1asli.jpg" alt="" class="CardImg">
-            <p class="CardText">Pada bab 1 sejarah, aku belajar tentang apa itu sejarah, pengertian sejarah, ruang lingkup sejarah, definisi sejarah, unsur dalam sejarah, sumber sejarah, manfaat sejarah, dll</p>
-        </div>
-    </div>
-
-    <div class="Card" id="lit2hsession">
-        <h1 class="CardTitle">Literacy</h1>
-        <div class="CardRow">
-            <img src="bindobab1.png" alt="" class="CardImg">
-            <p class="CardText">Pada bab 1 Literasi, aku belajar tentang teks anekdot, kritik sosial, sindiran, struktur teks anekdot, serta mengerjakan tugas identifikasi teks anekdot</p>
-        </div>
-    </div>
 </body>
 </html>
