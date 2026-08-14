@@ -152,6 +152,65 @@
             text-align: center;
         }
 
+        .BotMenu {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px clamp(10px, 3vw, 24px);
+            padding: 8px clamp(10px, 3vw, 24px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            background-color: #171717;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            position: fixed;
+        }
+
+        .BotMenuImg {
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            width: clamp(5px, 5vw, 45px);
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .BotMenuImgDiv {
+            display: flex;
+            justify-content: center;
+            margin-left: auto;
+        }
+
+        .BotMenuImg2 {
+                    border-radius: 10px;
+                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+                    width: clamp(5px, 5vw, 35px);
+                    aspect-ratio: 1 / 1;
+                    object-fit: cover;
+                    cursor: pointer;
+        }
+
+        .BotMenuText {
+                    color: rgb(255, 255, 255);
+                    text-align: center;
+                    line-height: 1.6;
+                    margin: 0;
+                    font-family: "RDR", serif;
+                    letter-spacing: 0.5px;
+                    font-size: clamp(0.85rem, 1.6vw, 1rem);
+
+        }
+
+        .BotMenuTextDiv {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(5px, 1vw, 12px);
+        }
+
         .rdrlogo {
             height: clamp(70px, 14vw, 120px);
             margin: 0 0 6px 0;
@@ -553,5 +612,15 @@
                 <p class="CardText">Jl. Mendut Jl. Raya Kranggan No.126, RT.004/RW.001, Jatisampurna, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433</p>
             </div>
         </div>
+
+    <div class="BotMenu">
+        <div class="BotMenuTextDiv">
+            <p class="BotMenuText">Made by Aldan Alkhalifi Z In HTML</p>
+            <img src="htmlimg.png" alt="" class="BotMenuImg2">
+        </div>
+        <div class="BotMenuImgDiv">
+            <img src="igimg.png" alt="" class="BotMenuImg" onclick='location.href = "https://www.instagram.com/justzyxx_/"'>
+        </div>
+    </div>
 </body>
 </html>
