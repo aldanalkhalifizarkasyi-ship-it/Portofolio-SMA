@@ -315,7 +315,19 @@
             align-items: baseline;
             justify-content: center;
             gap: 10px;
+            /* animation: jalanKanan 3s linear infinite; */
         }
+
+        /* @keyframes jalanKanan {
+
+            from {
+                transform: translateX(-100px);
+            }
+
+            to {
+                transform: translateX(100px);
+            }
+        } */
 
         .NameCardH1 {
             font-weight: bolder;
@@ -540,10 +552,12 @@
         <div class="Card" id="myprofilesession">
             <div class="CardRow">
                 <div class="NameCardText">
-                    <div class="NameCardTitle">
-                        <h1 class="NameCardH1">Portofolio</h1>
-                        <h1 class="NameCardH12">Aldan 10A</h1>
-                    </div>
+                    <marquee direction="right">
+                        <div class="NameCardTitle">
+                           <h1 class="NameCardH1">Portofolio</h1>
+                           <h1 class="NameCardH12">Aldan 10A</h1>
+                        </div>
+                    </marquee>
                     <p class="NameCardDescription">Halo, saya Aldan Alkhalifi Zarkasyi, siswa kelas 10 di SMA School of Human. Saya memiliki ketertarikan yang tinggi pada bidang pemrograman, terutama dalam pengembangan game dan pembuatan website. Saya senang mempelajari teknologi baru serta terus mengembangkan keterampilan di bidang tersebut. Di waktu luang, saya juga menikmati bermain game sebagai sarana hiburan sekaligus sumber inspirasi dalam membuat game.</p>
                     <img src="morgan.png" alt="" class="CardDecor NameCardDecor1">
                 </div>
