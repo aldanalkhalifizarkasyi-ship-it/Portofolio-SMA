@@ -403,6 +403,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: clamp(10px, 2.5vw, 16px);
+            width: max-content;
         }
 
         .projectimg {
@@ -552,7 +553,7 @@
         <div class="Card" id="myprofilesession">
             <div class="CardRow">
                 <div class="NameCardText">
-                    <marquee direction="right" scrollamount="5">
+                    <marquee behavior="slide" direction="right" scrollamount="7">
                         <div class="NameCardTitle">
                            <h1 class="NameCardH1">Portofolio</h1>
                            <h1 class="NameCardH12">Aldan 10A</h1>
@@ -564,13 +565,23 @@
                 <img src="fotoaldan3.png" alt="Foto Aldan" class="NameCardIMG">
             </div>
             <div class="NameCardH3Div">
-                <h1 class="NameCardH3">Game Projects</h1>
+                <h1 class="NameCardH3">Projects</h1>
             </div>
-            <div class="NameCardProject">
+            <!-- <div class="NameCardProject">
                 <img src="game1.png" alt="" class="projectimg">
                 <img src="game2.png" alt="" class="projectimg">
                 <img src="game3.png" alt="" class="projectimg">
-            </div>
+            </div> -->
+            <marquee direction="right" scrollamount ="8">
+                <div class="NameCardProject">
+                    <img src="portimg.png" alt="" class="projectimg">
+                    <img src="BATTLEGROUND_20260517_212321_0000.png" alt="" class="projectimg">
+                    <img src="NEW.png" alt="" class="projectimg">
+                    <img src="game1.png" alt="" class="projectimg">
+                    <img src="game2.png" alt="" class="projectimg">
+                    <img src="game3.png" alt="" class="projectimg">
+                </div>
+            </marquee>
         </div>
 </body>
 </html>
