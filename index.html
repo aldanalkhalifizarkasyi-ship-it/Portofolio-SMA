@@ -568,6 +568,35 @@
                 scroll-behavior: auto;
             }
         }
+
+        @view-transition {
+            navigation: auto;
+        }
+
+        ::view-transition-group(root) {
+            animation-duration: 1s;
+            animation-timing-function: ease;
+        }
+
+        ::view-transition-old(root) {
+            animation-name: slide-out;
+        }
+
+        ::view-transition-new(root) {
+            animation-name: slide-in;
+        }
+
+        @keyframes slide-out {
+            to {
+                translate: -100vh;
+            }
+        }
+
+        @keyframes slide-in {
+            from {
+                translate: 100vh;
+            }
+        }
     </style>
 </head>
 <body>
