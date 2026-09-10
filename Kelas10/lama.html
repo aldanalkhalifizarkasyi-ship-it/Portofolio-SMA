@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Aldan SOH</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #3B3B3B;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url("red-dead-redemption-3840x2160-10624.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        @font-face {
+            font-family: "RDR";
+            src: url("chinese rocks rg.ttf") format("truetype");
+        }
+
+        /* ===== TOP MENU ===== */
+        .TopMenu {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px clamp(10px, 3vw, 24px);
+            padding: 8px clamp(10px, 3vw, 24px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            background-color: #171717;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .sohlogo {
+            height: clamp(28px, 6vw, 40px);
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .TopMenuButtons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px clamp(10px, 2vw, 20px);
+            justify-content: flex-end;
+            flex: 1 1 auto;
+        }
+
+        .TopMenu button {
+            border: 0;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+            cursor: pointer;
+            font-family: "RDR", serif;
+            transition: 150ms ease;
+            padding: 4px 2px;
+            white-space: nowrap;
+        }
+
+        .TopMenu button:hover {
+            color: #ca0000;
+            transform: scale(1.15);
+        }
+
+        /* space so fixed menu doesn't cover content; height varies as it wraps */
+        .MenuSpacer {
+            height: 74px;
+            width: 100%;
+        }
+
+        .rdrlogo {
+            height: clamp(70px, 14vw, 120px);
+            margin: 10px 0 16px 0;
+            max-width: 90%;
+        }
+
+        /* ===== SHARED CARD STYLE ===== */
+        .Card {
+            width: 92%;
+            max-width: 1100px;
+            margin: clamp(10px, 2.5vw, 20px) 0;
+            padding: clamp(14px, 4vw, 30px);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            background-color: #171717;
+            scroll-margin-top: 90px;
+
+            display: flex;
+            flex-direction: column;
+            gap: clamp(14px, 3vw, 24px);
+
+            /* jadi acuan posisi untuk dekorasi absolute di dalamnya */
+            position: relative;
+        }
+
+        .CardTitle {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "RDR", serif;
+            text-align: center;
+        }
+
+        .CardRow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(12px, 3vw, 30px);
+        }
+
+        .CardText {
+            flex: 2 1 260px;
+            min-width: 220px;
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0;
+            font-family: "RDR", serif;
+            letter-spacing: 0.5px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .CardImg {
+            flex: 1 1 clamp(160px, 30vw, 300px);
+            max-width: 100%;
+            height: clamp(160px, 30vw, 300px);
+            width: auto;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== HOME CARD ===== */
+        .HomeCardSOHPhoto {
+            height: clamp(160px, 30vw, 300px);
+        }
+
+        .HomeCardSOHLoc {
+            height: clamp(150px, 28vw, 270px);
+        }
+
+        /* ===== PROFILE CARD ===== */
+        .NameCardTitle {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .NameCardH1 {
+            font-weight: bolder;
+            font-size: clamp(1.8rem, 6vw, 4rem);
+            margin: 0;
+            font-family: "RDR", serif;
+
+            background-image: linear-gradient(90deg, #ca0000, #ff5900, #f5e901);
+            background-size: 100%;
+            background-repeat: no-repeat;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .NameCardH12 {
+            font-weight: bolder;
+            font-size: clamp(1.8rem, 6vw, 4rem);
+            color: white;
+            margin: 0;
+            font-family: "RDR", serif;
+        }
+
+        .NameCardText {
+            flex: 2 1 260px;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .NameCardDescription {
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0;
+            font-family: "RDR", serif;
+            letter-spacing: 0.5px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .NameCardIMG {
+            flex: 1 1 clamp(150px, 30vw, 300px);
+            width: clamp(150px, 30vw, 300px);
+            height: clamp(150px, 30vw, 300px);
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            object-position: top;
+        }
+
+        .NameCardH3Div {
+            width: 100%;
+            text-align: center;
+            background-color: #000000;
+            border-radius: 20px;
+            padding: 10px 0;
+        }
+
+        .NameCardH3 {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "RDR", serif;
+        }
+
+        .NameCardProject {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(10px, 2.5vw, 16px);
+        }
+
+        .projectimg {
+            height: clamp(120px, 26vw, 250px);
+            max-width: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* ===== DECORATIONS =====
+           Posisinya "nempel"/overlap di pojok kartu seperti versi awal, tapi sekarang
+           position:absolute-nya relatif ke .Card (karena .Card sudah position:relative),
+           bukan relatif ke seluruh halaman seperti sebelumnya. Jadi kalau kartunya
+           mengecil/melebar, posisi dekor ikut menyesuaikan secara proporsional (pakai %),
+           dan ukurannya tetap fluid lewat clamp(). */
+        .CardDecor {
+            position: absolute;
+            max-width: 35%;
+            width: auto;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .HomeCardDecor1 {
+            height: clamp(60px, 15vw, 200px);
+            top: -12%;
+            right: -12%;
+            transform: rotate(30deg);
+        }
+
+        .NameCardDecor1 {
+            height: clamp(90px, 20vw, 260px);
+            bottom: 1%;
+            left: -2%;
+        }
+
+        .SosioCardDecor1 {
+            height: clamp(90px, 20vw, 260px);
+            top: -25%;
+            right: -5%;
+        }
+
+        @media (max-width: 460px) {
+            .HomeCardDecor1 {
+                top: -4%;
+                right: -12%;
+            }
+
+            .NameCardDecor1 {
+                bottom: 0.2%;
+                left: -1%;
+            }
+
+            .SosioCardDecor1 {
+                top: -15%;
+                right: -4%;
+            }
+
+            .rdrlogo {
+                margin-top: 55px;
+            }
+        }
+
+        /* ===== RESPONSIVE TWEAKS ===== */
+        @media (max-width: 700px) {
+            .TopMenu {
+                justify-content: center;
+            }
+
+            .TopMenuButtons {
+                justify-content: center;
+            }
+
+            .CardText,
+            .NameCardDescription {
+                text-align: left;
+            }
+
+            .rdrlogo {
+                margin-top: 55px;
+            }
+            .NameCardIMG {
+                height: clamp(200px, 30vw, 300px);
+            }
+        }
+
+        @media (max-width: 460px) {
+            .CardRow {
+                justify-content: space-between;
+            }
+
+            .CardDecor {
+                max-width: 28%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="TopMenu">
+        <img src="../10/SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <div class="TopMenuButtons">
+            <button onclick="location.href='#homesession'">Home</button>
+            <button onclick="location.href='#myprofilesession'">My Profile</button>
+            <button onclick="location.href='#mathsession'">Mathematics</button>
+            <button onclick="location.href='#physicssession'">Physics</button>
+            <button onclick="location.href='#sosiologysession'">Sosiology</button>
+            <button onclick="location.href='#biologysession'">Biology</button>
+            <button>English</button>
+            <button onclick="location.href='#historysession'">History</button>
+            <button onclick="location.href='#lit2session'">LIT2</button>
+            <button>Agama</button>
+            <button>OPT</button>
+            <button>ICT</button>
+            <button>21CA</button>
+            <button>Logarithm</button>
+        </div>
+    </div>
+    <div class="MenuSpacer"></div>
+
+    <img src="../10/Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
+
+    <div class="Card" id="homesession">
+        <h1 class="CardTitle">School Of Human</h1>
+        <div class="CardRow">
+            <img src="../10/gambarsoh.jpeg" alt="" class="CardImg HomeCardSOHPhoto">
+            <p class="CardText">SCHOOL OF HUMAN adalah sekolah yang menghargai setiap potensi manusia sebagai ciptaan Allah SWT yang terbaik dengan membantu peserta didiknya menemukan profesi yang profesional sesuai dengan bakat, minat, dan pandangan dunianya sehingga siap menghadapi era globalisasi dengan menjunjung tinggi Akhlakul Karimah.</p>
+            <img src="../10/hatdec.png" alt="" class="CardDecor HomeCardDecor1">
+        </div>
+        <h1 class="CardTitle">Location</h1>
+        <div class="CardRow">
+            <img src="../10/lokasisoh.png" alt="" class="CardImg HomeCardSOHLoc">
+            <p class="CardText">Jl. Mendut Jl. Raya Kranggan No.126, RT.004/RW.001, Jatisampurna, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433</p>
+        </div>
+    </div>
+
+    <div class="Card" id="myprofilesession">
+        <div class="CardRow">
+            <div class="NameCardText">
+                <div class="NameCardTitle">
+                    <h1 class="NameCardH1">Portofolio</h1>
+                    <h1 class="NameCardH12">Aldan 10A</h1>
+                </div>
+                <p class="NameCardDescription">Halo, saya Aldan Alkhalifi Zarkasyi, siswa kelas 10 di SMA School of Human. Saya memiliki ketertarikan yang tinggi pada bidang pemrograman, terutama dalam pengembangan game dan pembuatan website. Saya senang mempelajari teknologi baru serta terus mengembangkan keterampilan di bidang tersebut. Di waktu luang, saya juga menikmati bermain game sebagai sarana hiburan sekaligus sumber inspirasi dalam membuat game.</p>
+                <img src="../10/morgan.png" alt="" class="CardDecor NameCardDecor1">
+            </div>
+            <img src="../10/fotoaldan3.png" alt="Foto Aldan" class="NameCardIMG">
+        </div>
+        <div class="NameCardH3Div">
+            <h1 class="NameCardH3">Game Projects</h1>
+        </div>
+        <div class="NameCardProject">
+            <img src="../10/game1.png" alt="" class="projectimg">
+            <img src="../10/game2.png" alt="" class="projectimg">
+            <img src="../10/game3.png" alt="" class="projectimg">
+        </div>
+    </div>
+
+    <div class="Card" id="mathsession">
+        <h1 class="CardTitle">Mathematics</h1>
+        <div class="CardRow">
+            <img src="../10/latihan_E&L1.png" alt="" class="CardImg">
+            <p class="CardText">Pada Bab 1, saya belajar tentang eksponen dan logaritma, mulai dari sifat-sifat dan aturan operasi eksponen hingga bentuk akar dan pangkat. Saya juga mempelajari konsep logaritma, hubungan antara eksponen dan logaritma, serta cara menyelesaikan berbagai bentuk soal yang berkaitan dengan keduanya.</p>
+        </div>
+    </div>
+
+    <div class="Card" id="physicssession">
+        <h1 class="CardTitle">Physics</h1>
+    </div>
+
+    <div class="Card" id="sosiologysession">
+        <h1 class="CardTitle">Sosiology</h1>
+        <div class="CardRow">
+            <img src="../10/sosiotugas.jpg" alt="" class="CardImg">
+            <p class="CardText">Pada Bab 1, saya belajar tentang pengertian dan sejarah sosiologi, mengenal tokoh seperti Karl Marx, serta mempelajari perilaku manusia dan kehidupan sosial, termasuk pada zaman koboi. Saya juga melakukan observasi di luar kelas untuk mengamati kondisi dan interaksi sosial secara langsung, sehingga saya belajar memahami masyarakat berdasarkan pengamatan dan bukti.</p>
+            <img src="../10/john.png" alt="" class="CardDecor SosioCardDecor1">
+        </div>
+    </div>
+
+    <div class="Card" id="biologysession">
+        <h1 class="CardTitle">Biology</h1>
+        <div class="CardRow">
+            <img src="../10/biobab1.png" alt="" class="CardImg">
+            <p class="CardText">Pada bab 1, belajar tentang Ruang Lingkup biologi, disini saya belajar tentang pengertian biologi, ciri ciri makhluk hidup, objek biologi, objek kajian biologi, cabang cabang biologi, peran biologi pada kehidupan, metode ilmiah, langkah langkah metode ilmiah, sikap ilmiah, laporan ilmiah, dan mikroskop </p>
+        </div>
+    </div>
+
+    <div class="Card" id="englishsession">
+        <h1 class="CardTitle">English</h1>
+        <div class="CardRow"></div>
+    </div>
+    
+    <div class="Card" id="historysession">
+        <h1 class="CardTitle">History</h1>
+        <div class="CardRow">
+            <img src="../10/sejarahbab1asli.jpg" alt="" class="CardImg">
+            <p class="CardText">Pada bab 1 sejarah, aku belajar tentang apa itu sejarah, pengertian sejarah, ruang lingkup sejarah, definisi sejarah, unsur dalam sejarah, sumber sejarah, manfaat sejarah, dll</p>
+        </div>
+    </div>
+
+    <div class="Card" id="lit2hsession">
+        <h1 class="CardTitle">Literacy</h1>
+        <div class="CardRow">
+            <img src="../10/bindobab1.png" alt="" class="CardImg">
+            <p class="CardText">Pada bab 1 Literasi, aku belajar tentang teks anekdot, kritik sosial, sindiran, struktur teks anekdot, serta mengerjakan tugas identifikasi teks anekdot</p>
+        </div>
+    </div>
+</body>
+</html>

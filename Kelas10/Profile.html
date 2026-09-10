@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Aldan SOH</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #3B3B3B;
+            overflow-x: hidden;
+            max-width: 100%;
+            min-height: 100vh;
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("../Images10/red-dead-redemption-3840x2160-10624.png");
+            background-attachment: fixed;
+            
+            /* default: background IKUT SCROLL, bukan fixed.
+               ini yang bikin lebih responsif & aman di HP (lihat penjelasan
+               di bawah kenapa background-attachment:fixed dihapus dari sini) */
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(14px, 3vw, 24px);
+            padding: 100px 0 50px;
+        }
+
+        /* ===== 3 HERO SECTION: RDR / GTA / TLOU =====
+           Tiap .hero adalah "wadah" untuk sepertiga konten portofolio
+           (3 Card per hero, 9 Card dibagi rata 3-3-3), dengan foto
+           temanya sendiri sebagai background. */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("../Images10/red-dead-redemption-3840x2160-10624.png");
+            
+            /* default: background IKUT SCROLL, bukan fixed.
+               ini yang bikin lebih responsif & aman di HP (lihat penjelasan
+               di bawah kenapa background-attachment:fixed dihapus dari sini) */
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(14px, 3vw, 24px);
+            padding: 100px 0 50px;
+        }
+
+        /* Efek parallax (background diam saat isinya di-scroll) HANYA dinyalakan
+           di layar besar & device yang punya mouse (bukan touchscreen).
+           Alasan: background-attachment:fixed itu:
+           1) TIDAK didukung dengan benar di Safari iOS (background malah
+              kelihatan "melompat"/blank/ke-crop aneh saat scroll di iPhone/iPad),
+           2) berat/nge-lag di banyak HP Android karena browser terpaksa
+              repaint background tiap scroll,
+           3) di section yang tinggi (karena isinya banyak card), fixed bikin
+              gambarnya "diam di tempat" jadi kelihatan seperti nyangkut,
+              bukan menutupi seluruh section dengan rapi.
+           Jadi di HP/tablet biarkan default (scroll), efek fixed cuma untuk
+           desktop dengan mouse. */
+        @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+            .hero {
+                background-attachment: fixed;
+            }
+        }
+
+        @font-face {
+            font-family: "RDR";
+            src: url("../Fonts10/chinese rocks rg.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "GTA";
+            src: url("../Fonts10/Bl.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: "TLOU";
+            src: url("../Fonts10/Last Of Us Rough.ttf") format("truetype");
+        }
+
+        /* ===== TOP MENU ===== */
+        .TopMenu {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px clamp(10px, 3vw, 24px);
+            padding: 8px clamp(10px, 3vw, 24px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            background-color: #171717;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .sohlogo {
+            height: clamp(28px, 6vw, 40px);
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .TopMenuButtons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px clamp(10px, 2vw, 20px);
+            justify-content: flex-end;
+            flex: 1 1 auto;
+        }
+
+        .TopMenu button {
+            border: 0;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+            cursor: pointer;
+            font-family: "RDR", serif;
+            transition: 150ms ease;
+            padding: 4px 2px;
+            white-space: nowrap;
+        }
+
+        .TopMenu button:hover {
+            color: #ca0000;
+            transform: scale(1.15);
+        }
+
+        .TopMenuWelcome {
+            color: rgb(255, 255, 255);
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
+            font-family: "RDR", serif;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .rdrlogo {
+            height: clamp(70px, 14vw, 120px);
+            margin: 0 0 6px 0;
+            max-width: 90%;
+            display: block;
+        }
+
+        .logobg,
+        .logobg2 {
+            width: clamp(160px, 45vw, 350px);
+            background-color: #171717;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(8px, 2vw, 16px);
+        }
+
+        .gta5logo {
+            height: clamp(60px, 14vw, 250px);
+            max-width: 90%;
+            width: auto;
+            display: block;
+        }
+
+        .TLOUlogo {
+            height: clamp(40px, 14vw, 200px);
+            max-width: 90%;
+            width: auto;
+            display: block;
+        }
+
+        .SubjectsDropdown {
+            border: 0;
+            border-radius: 20px;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+            cursor: pointer;
+            font-family: "RDR", serif;
+        }
+
+        /* ===== SHARED CARD STYLE ===== */
+        .Card {
+            width: 92%;
+            max-width: 1100px;
+            padding: clamp(14px, 4vw, 30px);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            background-color: #171717;
+            scroll-margin-top: 90px;
+
+            display: flex;
+            flex-direction: column;
+            gap: clamp(14px, 3vw, 24px);
+
+            /* jadi acuan posisi untuk dekorasi absolute di dalamnya */
+            position: relative;
+            overflow: visible;
+            view-transition-name: page-content;
+        }
+
+        .CardTitle {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "RDR", serif;
+            text-align: center;
+        }
+
+        .CardTitle2 {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "GTA", serif;
+            text-align: center;
+        }
+
+        .CardTitle3 {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "TLOU", serif;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .CardRow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(12px, 3vw, 30px);
+        }
+
+        .CardText {
+            flex: 2 1 260px;
+            min-width: 220px;
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0;
+            font-family: "RDR", serif;
+            letter-spacing: 0.5px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .CardText2 {
+            flex: 2 1 260px;
+            min-width: 220px;
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0;
+            font-family: "GTA", serif;
+            letter-spacing: 1px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .CardText3 {
+            flex: 2 1 260px;
+            min-width: 220px;
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0;
+            font-family: "TLOU", serif;
+            letter-spacing: 2.5px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .CardImg {
+            flex: 1 1 clamp(160px, 30vw, 300px);
+            max-width: 100%;
+            height: clamp(160px, 30vw, 300px);
+            width: auto;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== HOME CARD ===== */
+        .HomeCardSOHPhoto {
+            height: clamp(160px, 30vw, 300px);
+        }
+
+        .HomeCardSOHLoc {
+            height: clamp(150px, 28vw, 270px);
+        }
+
+        /* ===== PROFILE CARD ===== */
+        .NameCardTitle {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: center;
+            gap: 10px;
+            /* animation: jalanKanan 3s linear infinite; */
+        }
+
+        /* @keyframes jalanKanan {
+
+            from {
+                transform: translateX(-100px);
+            }
+
+            to {
+                transform: translateX(100px);
+            }
+        } */
+
+        .NameCardH1 {
+            font-weight: bolder;
+            font-size: clamp(1.8rem, 6vw, 4rem);
+            margin: 0;
+            font-family: "RDR", serif;
+
+            background-image: linear-gradient(90deg, #ca0000, #ff5900, #f5e901);
+            background-size: 100%;
+            background-repeat: no-repeat;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .NameCardH12 {
+            font-weight: bolder;
+            font-size: clamp(1.8rem, 6vw, 4rem);
+            color: white;
+            margin: 0;
+            font-family: "RDR", serif;
+        }
+
+        .NameCardText {
+            flex: 2 1 260px;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .NameCardDescription {
+            color: rgb(255, 255, 255);
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0;
+            font-family: "RDR", serif;
+            letter-spacing: 0.5px;
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .NameCardIMG {
+            flex: 1 1 clamp(150px, 30vw, 300px);
+            width: clamp(150px, 30vw, 300px);
+            height: clamp(150px, 30vw, 300px);
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            object-position: top;
+        }
+
+        .NameCardH3Div {
+            width: 100%;
+            text-align: center;
+            background-color: #000000;
+            border-radius: 20px;
+            padding: 10px 0;
+        }
+
+        .NameCardH3 {
+            font-weight: bolder;
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            color: white;
+            margin: 0;
+            font-family: "RDR", serif;
+        }
+
+        .NameCardProject {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(10px, 2.5vw, 16px);
+            width: 92%;
+            max-width: 1000px;
+            align-items: center;
+        }
+
+        .projectimg {
+            height: clamp(120px, 26vw, 200px);
+            max-width: 80%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* ===== DECORATIONS =====
+           position:absolute-nya relatif ke .Card (karena .Card sudah position:relative),
+           bukan relatif ke seluruh halaman. Ukurannya fluid lewat clamp(). */
+        .CardDecor {
+            position: absolute;
+            max-width: 35%;
+            width: auto;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .HomeCardDecor1 {
+            height: clamp(60px, 15vw, 200px);
+            top: -10%;
+            right: -12%;
+            transform: rotate(30deg);
+        }
+
+        .NameCardDecor1 {
+            height: clamp(90px, 20vw, 260px);
+            bottom: 1%;
+            left: -2%;
+        }
+
+        .SosioCardDecor1 {
+            height: clamp(90px, 20vw, 260px);
+            top: -25%;
+            right: -5%;
+        }
+
+        .GtaCardDecor1,
+        .GtaCardDecor2,
+        .GtaCardDecor3,
+        .TLOUCardDecor1,
+        .TLOUCardDecor2,
+        .TLOUCardDecor3 {
+            height: clamp(90px, 20vw, 260px);
+            top: -25%;
+            right: -5%;
+        }
+
+        @media (max-width: 460px) {
+            .HomeCardDecor1 {
+                top: -4%;
+                right: -12%;
+            }
+
+            .NameCardDecor1 {
+                bottom: 0.2%;
+                left: -1%;
+            }
+
+            .SosioCardDecor1,
+            .GtaCardDecor1,
+            .GtaCardDecor2,
+            .GtaCardDecor3,
+            .TLOUCardDecor1,
+            .TLOUCardDecor2,
+            .TLOUCardDecor3 {
+                top: -15%;
+                right: -4%;
+            }
+        }
+
+        /* ===== RESPONSIVE TWEAKS ===== */
+        @media (max-width: 700px) {
+            .TopMenu {
+                justify-content: center;
+            }
+
+            .TopMenuButtons {
+                justify-content: center;
+            }
+
+            .CardText,
+            .NameCardDescription {
+                text-align: left;
+            }
+
+            .NameCardIMG {
+                height: clamp(200px, 30vw, 300px);
+            }
+
+            /* menu jadi 2-3 baris di layar sempit -> kasih ruang lebih di atas hero */
+            .hero {
+                padding-top: 140px;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .CardRow {
+                justify-content: space-between;
+            }
+
+            .CardDecor {
+                max-width: 28%;
+            }
+
+            .hero {
+                padding-top: 170px;
+            }
+        }
+
+        /* pengguna yang mematikan animasi di OS-nya -> jangan paksa smooth-scroll */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        @view-transition {
+            navigation: auto;
+        }
+
+        ::view-transition-group(page-content) {
+            animation-duration: 1s;
+            animation-timing-function: ease;
+        }
+
+        ::view-transition-old(page-content) {
+            animation-name: slide-out;
+        }
+
+        ::view-transition-new(page-content) {
+            animation-name: slide-in;
+        }
+
+        @keyframes slide-out {
+            to {
+                translate: -100vw;
+            }
+        }
+
+        @keyframes slide-in {
+            from {
+                translate: 100vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="TopMenu">
+        <img src="../Images10/SOHLogo.jpeg" alt="Logo SOH" class="sohlogo">
+        <div class="TopMenuButtons">
+            <button onclick="location.href='../index.html'">Main Menu</button>
+            <button onclick="location.href='Home.html'">Home</button>
+            <button onclick="location.href='Profile.html'">My Profile</button>
+            <button onclick="location.href='UA.html'">Unit Activity</button>
+            <select name="Subjects" id="Subjects" onchange="location = this.value;" class="SubjectsDropdown">
+                <option value="" disabled selected hidden>Subjects</option>
+                <option value="Mathematics.html">Mathematics</option>
+                <option value="tekek.html">Physics</option>
+                <option value="Sosiology.html">Sosiology</option>
+                <option value="Biology.html">Biology</option>
+                <option value="English.html">English</option>
+                <option value="History.html">History</option>
+                <option value="Literacy.html">Literacy</option>
+                <option value="PAI.html">Agama</option>
+                <option value="OPT.html">OPT</option>
+                <option value="ICT.html">ICT</option>
+                <option value="21CA.html">21CA</option>
+                <option value="Logarithm.html">Logarithm</option>
+            </select>
+        </div>
+    </div>
+
+        <img src="../Images10/Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
+        <div class="Card" id="myprofilesession">
+            <div class="CardRow">
+                <div class="NameCardText">
+                    <marquee behavior="slide" direction="right" scrollamount="7">
+                        <div class="NameCardTitle">
+                           <h1 class="NameCardH1">Portofolio</h1>
+                           <h1 class="NameCardH12">Aldan 10A</h1>
+                        </div>
+                    </marquee>
+                    <p class="NameCardDescription">Halo, saya Aldan Alkhalifi Zarkasyi, siswa kelas 10 di SMA School of Human. Saya memiliki ketertarikan yang tinggi pada bidang pemrograman, terutama dalam pengembangan game dan pembuatan website. Saya senang mempelajari teknologi baru serta terus mengembangkan keterampilan di bidang tersebut. Di waktu luang, saya juga menikmati bermain game sebagai sarana hiburan sekaligus sumber inspirasi dalam membuat game.</p>
+                    <img src="../Images10/morgan.png" alt="" class="CardDecor NameCardDecor1">
+                </div>
+                <img src="../Images10/fotoaldan3.png" alt="Foto Aldan" class="NameCardIMG">
+            </div>
+            <div class="NameCardH3Div">
+                <h1 class="NameCardH3">Web Projects</h1>
+            </div>
+            <!-- <div class="NameCardProject">
+                <img src="../10/game1.png" alt="" class="projectimg">
+                <img src="../10/game2.png" alt="" class="projectimg">
+                <img src="../10/game3.png" alt="" class="projectimg">
+            </div> -->
+            <div class="NameCardProject">
+                <img src="../Images10/loginweb.png" alt="" class="projectimg" onclick="location.href = 'https://login-web-simple-pakai-localstorage.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
+                <img src="../Images10/calcuimg.png" alt="" class="projectimg" onclick="location.href = 'https://calculator-simple-projectaldan.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
+                <img src="../Images10/todolistimg.png" alt="" class="projectimg" onclick="location.href = 'https://to-do-list-projectaldan.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
+                <img src="../Images10/portimg.png" alt="" class="projectimg">
+            </div>
+        </div>
+</body>
+</html>
