@@ -264,6 +264,7 @@
             align-items: center;
             justify-content: center;
             gap: clamp(12px, 3vw, 30px);
+            position: relative;
         }
 
         .CardText {
@@ -310,6 +311,14 @@
             max-width: 100%;
             height: clamp(160px, 30vw, 300px);
             width: auto;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        #poster {
+            width: clamp(160px, 30vw, 300px);
+            aspect-ratio: 3 / 4;
             object-fit: cover;
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
@@ -429,21 +438,23 @@
 
         .HomeCardDecor1 {
             height: clamp(60px, 15vw, 200px);
-            top: -10%;
-            right: -12%;
-            transform: rotate(30deg);
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%) rotate(30deg);
         }
 
         .NameCardDecor1 {
             height: clamp(90px, 20vw, 260px);
             bottom: 1%;
-            left: -2%;
+            left: 0;
+            transform: translate(-50%, 0);
         }
 
         .SosioCardDecor1 {
             height: clamp(90px, 20vw, 260px);
-            top: -25%;
-            right: -5%;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -75%);
         }
 
         .GtaCardDecor1,
@@ -453,8 +464,9 @@
         .TLOUCardDecor2,
         .TLOUCardDecor3 {
             height: clamp(90px, 20vw, 260px);
-            top: -25%;
-            right: -5%;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -85%);
         }
 
         @media (max-width: 460px) {
@@ -593,9 +605,21 @@
         <div class="Card" id="sosiologysession">
             <h1 class="CardTitle2">Sosiology</h1>
             <div class="CardRow">
-                <img src="../Images10/sosiotugas.jpg" alt="" class="CardImg">
-                <p class="CardText3">Pada Bab 1, saya belajar tentang pengertian dan sejarah sosiologi, mengenal tokoh seperti Karl Marx, serta mempelajari perilaku manusia dan kehidupan sosial, termasuk pada zaman koboi. Saya juga melakukan observasi di luar kelas untuk mengamati kondisi dan interaksi sosial secara langsung, sehingga saya belajar memahami masyarakat berdasarkan pengamatan dan bukti.</p>
+                <div style="position: relative; width: 426px; height: 268px; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"    src="https://www.canva.com/design/DAHQYWOw77I/teI_mcx5ncpSWyOeNC-pTA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">  </iframe></div><a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAHQYWOw77I&#x2F;teI_mcx5ncpSWyOeNC-pTA&#x2F;view?utm_content=DAHQYWOw77I&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a>
+                <p class="CardText3">Tugas presentasi tokoh dalam dunia sosiologi</p>
                 <img src="../Images10/gta5decormichael.png" alt="" class="CardDecor GtaCardDecor1">
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/sosiotugas.jpg" alt="" id="poster" style="object-fit: fill;">
+                <p class="CardText3">Tugas Sosiologi, analisis lingkungan sekolah</p>
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/wordwallsosio.jpeg" alt="" class="CardImg" style="object-fit: fill;">
+                <p class="CardText3">Tugas Sosiologi, kerjakan wordwall tts tentang sosiologi</p>
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/gtngryng.png" alt="" class="CardImg" style="object-fit: fill; width: 426px;">
+                <p class="CardText3">Tugas Sosiologi, cari contoh dari gotong royong, bargaining, kooptasi, koalisi, dan joint venture masing masing 1</p>
             </div>
         </div>
 </body>

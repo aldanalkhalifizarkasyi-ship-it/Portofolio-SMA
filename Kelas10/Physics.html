@@ -256,6 +256,7 @@
             align-items: center;
             justify-content: center;
             gap: clamp(12px, 3vw, 30px);
+            position: relative;
         }
 
         .CardText {
@@ -421,21 +422,23 @@
 
         .HomeCardDecor1 {
             height: clamp(60px, 15vw, 200px);
-            top: -10%;
-            right: -12%;
-            transform: rotate(30deg);
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%) rotate(30deg);
         }
 
         .NameCardDecor1 {
             height: clamp(90px, 20vw, 260px);
             bottom: 1%;
-            left: -2%;
+            left: 0;
+            transform: translate(-50%, 0);
         }
 
         .SosioCardDecor1 {
             height: clamp(90px, 20vw, 260px);
-            top: -25%;
-            right: -5%;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -75%);
         }
 
         .GtaCardDecor1,
@@ -445,8 +448,9 @@
         .TLOUCardDecor2,
         .TLOUCardDecor3 {
             height: clamp(90px, 20vw, 260px);
-            top: -25%;
-            right: -5%;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -75%);
         }
 
         @media (max-width: 460px) {
