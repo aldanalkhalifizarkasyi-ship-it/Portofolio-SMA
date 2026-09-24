@@ -306,6 +306,15 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
+        #poster {
+            width: clamp(160px, 30vw, 300px);
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+
         /* ===== HOME CARD ===== */
         .HomeCardSOHPhoto {
             height: clamp(160px, 30vw, 300px);
@@ -585,9 +594,25 @@
         <div class="Card" id="mathsession">
             <h1 class="CardTitle">Mathematics</h1>
             <div class="CardRow">
-                <img src="../Images10/latihan_E&L1.png" alt="" class="CardImg">
+                <img src="../Images10/latihan_E&L1.png" alt="" class="CardImg" style="object-fit: fill;">
                 <p class="CardText3">Pada Bab 1, saya belajar tentang eksponen dan logaritma, mulai dari sifat-sifat dan aturan operasi eksponen hingga bentuk akar dan pangkat. Saya juga mempelajari konsep logaritma, hubungan antara eksponen dan logaritma, serta cara menyelesaikan berbagai bentuk soal yang berkaitan dengan keduanya.</p>
                 <img src="../Images10/john.png" alt="" class="CardDecor SosioCardDecor1">
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/tugasmtk2.jpeg" alt="" id="poster" style="object-fit: fill;">
+                <p class="CardText3">Tugas Matematika, latihan soal tentang peluruhan eksponen</p>
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/tugasmtk3.jpeg" alt="" id="poster" style="object-fit: fill;">
+                <p class="CardText3">Tugas Matematika, latihan soal tentang peluruhan eksponen</p>
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/tugasmtk4.jpeg" alt="" id="poster" style="object-fit: fill;">
+                <p class="CardText3">Tugas Matematika, latihan soal tentang pertumbuhan eksponen</p>
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/tugasmtk5.jpeg" alt="" id="poster" style="object-fit: fill;">
+                <p class="CardText3">Tugas Matematika, latihan soal tentang eksponen</p>
             </div>
         </div>
 </body>

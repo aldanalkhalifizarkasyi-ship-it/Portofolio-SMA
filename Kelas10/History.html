@@ -317,6 +317,14 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
+        #poster {
+            width: clamp(160px, 30vw, 300px);
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
         /* ===== HOME CARD ===== */
         .HomeCardSOHPhoto {
             height: clamp(160px, 30vw, 300px);
@@ -598,9 +606,17 @@
         <div class="Card" id="historysession">
             <h1 class="CardTitle2">History</h1>
             <div class="CardRow">
-                <img src="../Images10/sejarahbab1asli.jpg" alt="" class="CardImg">
+                <img src="../Images10/sejarahbab1asli.jpg" alt="" id="poster">
                 <p class="CardText3">Pada bab 1 sejarah, aku belajar tentang apa itu sejarah, pengertian sejarah, ruang lingkup sejarah, definisi sejarah, unsur dalam sejarah, sumber sejarah, manfaat sejarah, dll</p>
                 <img src="../Images10/gtadecor4.png" alt="" class="CardDecor GtaCardDecor3">
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/tugassej3.jpeg" alt="" id="poster">
+                <p class="CardText3">Tugas Sejarah, kerjakan latihan soal</p>
+            </div>
+            <div class="CardRow">
+                <img src="../Images10/tugassej4.jpeg" alt="" id="poster">
+                <p class="CardText3">Tugas Sejarah, kerjakan sebuah kasus</p>
             </div>
         </div>
 </body>
