@@ -93,8 +93,8 @@
         }
 
         @font-face {
-            font-family: "TLOU";
-            src: url("The Last Of Us Rough.ttf") format("truetype");
+            font-family: "FREDOKA";
+            src: url("../Fonts10/FredokaOne-Regular.ttf") format("truetype");
         }
 
         /* ===== TOP MENU ===== */
@@ -286,7 +286,7 @@
             line-height: 1.6;
             max-width: 500px;
             margin: 0;
-            font-family: "TLOU", serif;
+            font-family: "FREDOKA", serif;
             letter-spacing: 2.5px;
             font-size: clamp(0.85rem, 1.6vw, 1rem);
         }
@@ -296,6 +296,14 @@
             max-width: 100%;
             height: clamp(160px, 30vw, 300px);
             width: auto;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        #poster {
+            width: clamp(160px, 30vw, 300px);
+            aspect-ratio: 3 / 4;
             object-fit: cover;
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
@@ -580,8 +588,8 @@
         <div class="Card" id="mathsession">
             <h1 class="CardTitle">Seni Panggung</h1>
             <div class="CardRow">
-                <img src="../Images10/latihan_E&L1.png" alt="" class="CardImg">
-                <p class="CardText">Pada Bab 1, saya belajar tentang eksponen dan logaritma, mulai dari sifat-sifat dan aturan operasi eksponen hingga bentuk akar dan pangkat. Saya juga mempelajari konsep logaritma, hubungan antara eksponen dan logaritma, serta cara menyelesaikan berbagai bentuk soal yang berkaitan dengan keduanya.</p>
+                <img src="../Images10/tugasteater1.jpg" alt="" id="poster">
+                <p class="CardText3">Tugas peminatan seni panggung atau theater, membuat poster tentang smart goal dimasa depan, non akademik dan akademik</p>
                 <img src="../Images10/44009be4549418ff2a931a7408fe1a5f-removebg-preview.png" alt="" class="CardDecor SosioCardDecor1">
             </div>
         </div>
