@@ -26,8 +26,9 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url("../Images10/red-dead-redemption-3840x2160-10624.png");
+            background-image: url("../Images10/tloubg3.jpg");
             background-attachment: fixed;
+            
             
             /* default: background IKUT SCROLL, bukan fixed.
                ini yang bikin lebih responsif & aman di HP (lihat penjelasan
@@ -38,7 +39,21 @@
             align-items: center;
             gap: clamp(14px, 3vw, 24px);
             padding: 100px 0 50px;
+            position: relative;
         }
+
+        /* body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background-image: url("tloubg3.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                opacity: 0.5;
+                z-index: -1;
+        } */
 
         /* ===== 3 HERO SECTION: RDR / GTA / TLOU =====
            Tiap .hero adalah "wadah" untuk sepertiga konten portofolio
@@ -51,7 +66,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url("../Images10/red-dead-redemption-3840x2160-10624.png");
+            background-image: url("tloubg3.png");
             
             /* default: background IKUT SCROLL, bukan fixed.
                ini yang bikin lebih responsif & aman di HP (lihat penjelasan
@@ -88,18 +103,13 @@
         }
 
         @font-face {
-            font-family: "GTA";
-            src: url("Pricedown Bl.otf") format("opentype");
+            font-family: "FREDOKA";
+            src: url("../Fonts10/FredokaOne-Regular.ttf") format("truetype");
         }
 
         @font-face {
             font-family: "TLOU";
-            src: url("The Last Of Us Rough.ttf") format("truetype");
-        }
-
-        @font-face {
-            font-family: "FREDOKA";
-            src: url("../Fonts10/FredokaOne-Regular.ttf") format("truetype");
+            src: url("../Fonts10/The Last Of Us Rough.ttf") format("truetype");
         }
 
         /* ===== TOP MENU ===== */
@@ -254,6 +264,7 @@
             align-items: center;
             justify-content: center;
             gap: clamp(12px, 3vw, 30px);
+
             position: relative;
         }
 
@@ -278,7 +289,7 @@
             line-height: 1.6;
             max-width: 500px;
             margin: 0;
-            font-family: "GTA", serif;
+            font-family: "FREDOKA", serif;
             letter-spacing: 1px;
             font-size: clamp(0.85rem, 1.6vw, 1rem);
         }
@@ -291,8 +302,8 @@
             line-height: 1.6;
             max-width: 500px;
             margin: 0;
-            font-family: "FREDOKA", serif;
-            letter-spacing: 1px;
+            font-family: "TLOU", serif;
+            letter-spacing: 2.5px;
             font-size: clamp(0.85rem, 1.6vw, 1rem);
         }
 
@@ -313,7 +324,6 @@
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
-
 
         /* ===== HOME CARD ===== */
         .HomeCardSOHPhoto {
@@ -590,29 +600,15 @@
         </div>
     </div>
 
-        <img src="../Images10/Red_Dead_Redemption_2_Logo.png" alt="RDR2 Logo" class="rdrlogo">
-        <div class="Card" id="mathsession">
-            <h1 class="CardTitle">Mathematics</h1>
+       <div class="logobg">
+            <img src="../Images10/tloulogo2.png" alt="TLOU Logo" class="TLOUlogo">
+        </div>
+        <div class="Card" id="lit2session">
+            <h1 class="CardTitle3">Logics</h1>
             <div class="CardRow">
-                <img src="../Images10/latihan_E&L1.png" alt="" class="CardImg" style="object-fit: fill;">
-                <p class="CardText3">Pada Bab 1, saya belajar tentang eksponen dan logaritma, mulai dari sifat-sifat dan aturan operasi eksponen hingga bentuk akar dan pangkat. Saya juga mempelajari konsep logaritma, hubungan antara eksponen dan logaritma, serta cara menyelesaikan berbagai bentuk soal yang berkaitan dengan keduanya.</p>
-                <img src="../Images10/john.png" alt="" class="CardDecor SosioCardDecor1">
-            </div>
-            <div class="CardRow">
-                <img src="../Images10/tugasmtk2.jpeg" alt="" id="poster" style="object-fit: fill;">
-                <p class="CardText3">Tugas Matematika, latihan soal tentang peluruhan eksponen</p>
-            </div>
-            <div class="CardRow">
-                <img src="../Images10/tugasmtk3.jpeg" alt="" id="poster" style="object-fit: fill;">
-                <p class="CardText3">Tugas Matematika, latihan soal tentang peluruhan eksponen</p>
-            </div>
-            <div class="CardRow">
-                <img src="../Images10/tugasmtk4.jpeg" alt="" id="poster" style="object-fit: fill;">
-                <p class="CardText3">Tugas Matematika, latihan soal tentang pertumbuhan eksponen</p>
-            </div>
-            <div class="CardRow">
-                <img src="../Images10/tugasmtk5.jpeg" alt="" id="poster" style="object-fit: fill;">
-                <p class="CardText3">Tugas Matematika, latihan soal tentang eksponen</p>
+                <img src="../Images10/tugasict1.png" alt="" id="poster">
+                <p class="CardText2">Tugas Logika, </p>
+                <img src="../Images10/tloudecor5.png" alt="" class="CardDecor TLOUCardDecor3">
             </div>
         </div>
 </body>
