@@ -403,8 +403,8 @@
 
         .NameCardProject {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
             gap: clamp(10px, 2.5vw, 16px);
             width: 92%;
             max-width: 1000px;
@@ -413,6 +413,13 @@
 
         .projectimg {
             height: clamp(120px, 26vw, 200px);
+            max-width: 80%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .projectimglong {
+            height: clamp(70px, 26vw, 150px);
             max-width: 80%;
             object-fit: cover;
             border-radius: 12px;
@@ -504,6 +511,11 @@
             /* menu jadi 2-3 baris di layar sempit -> kasih ruang lebih di atas hero */
             .hero {
                 padding-top: 140px;
+            }
+
+            .projectimg {
+                /* width: clamp(120px, 30vw, 270px); */
+                height: clamp(120px, 26vw, 182px); 
             }
         }
 
@@ -599,13 +611,13 @@
                            <h1 class="NameCardH12">Aldan 10A</h1>
                         </div>
                     </marquee>
-                    <p class="NameCardDescription">Halo, saya Aldan Alkhalifi Zarkasyi, siswa kelas 10 di SMA School of Human. Saya memiliki ketertarikan yang tinggi pada bidang pemrograman, terutama dalam pengembangan game dan pembuatan website. Saya senang mempelajari teknologi baru serta terus mengembangkan keterampilan di bidang tersebut. Di waktu luang, saya juga menikmati bermain game sebagai sarana hiburan sekaligus sumber inspirasi dalam membuat game.</p>
+                    <p class="NameCardDescription">Halo, saya Aldan Alkhalifi Zarkasyi, siswa kelas 10 di SMA School of Human. Saya memiliki ketertarikan yang tinggi pada bidang pemrograman, terutama dalam pengembangan game dan pembuatan website. Saya senang mempelajari teknologi baru serta terus mengembangkan keterampilan di bidang tersebut. Di waktu luang, saya juga menikmati bermain game sebagai sarana hiburan sekaligus sumber inspirasi dalam membuat game. Aku bahkan juga mempunyai 3 channel youtube, ada yang khusus gaming dan coding.</p>
                     <img src="../Images10/morgan.png" alt="" class="CardDecor NameCardDecor1">
                 </div>
                 <img src="../Images10/fotoaldan3.png" alt="Foto Aldan" class="NameCardIMG">
             </div>
             <div class="NameCardH3Div">
-                <h1 class="NameCardH3">Web Projects</h1>
+                <h1 class="NameCardH3">What i do</h1>
             </div>
             <!-- <div class="NameCardProject">
                 <img src="../10/game1.png" alt="" class="projectimg">
@@ -613,11 +625,16 @@
                 <img src="../10/game3.png" alt="" class="projectimg">
             </div> -->
             <div class="NameCardProject">
-                <img src="../Images10/muzic.png " alt="" class="projectimg" onclick="location.href = 'https://muzic-web.pages.dev/'" style="cursor: pointer;">
-                <img src="../Images10/loginweb.png" alt="" class="projectimg" onclick="location.href = 'https://login-web-simple-pakai-localstorage.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
-                <img src="../Images10/calcuimg.png" alt="" class="projectimg" onclick="location.href = 'https://calculator-simple-projectaldan.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
-                <img src="../Images10/todolistimg.png" alt="" class="projectimg" onclick="location.href = 'https://to-do-list-projectaldan.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
-                <img src="../Images10/portimg.png" alt="" class="projectimg">
+                <marquee behavior="scroll" direction="right" scrollamount="11">
+                    <!-- <img src="../Images10/muzic.png " alt="" class="projectimg" onclick="location.href = 'https://muzic-web.pages.dev/'" style="cursor: pointer;">
+                    <img src="../Images10/loginweb.png" alt="" class="projectimg" onclick="location.href = 'https://login-web-simple-pakai-localstorage.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;"> -->
+                    <img src="../Images10/calcuimg.png" alt="" class="projectimg" onclick="location.href = 'https://calculator-simple-projectaldan.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
+                    <img src="../Images10/todolistimg.png" alt="" class="projectimg" onclick="location.href = 'https://to-do-list-projectaldan.aldanalkhalifizarkasyi.workers.dev/'" style="cursor: pointer;">
+                    <!-- <img src="../Images10/portimg.png" alt="" class="projectimg"> -->
+                    <img src="../Images10/zenithdev.png" alt="" class="projectimglong">
+                    <img src="../Images10/zyxoneworld.png" alt="" class="projectimglong">
+                    <img src="../Images10/zyxonemc.png" alt="" class="projectimglong">
+                </marquee>
             </div>
         </div>
 </body>
